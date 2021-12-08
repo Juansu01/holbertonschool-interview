@@ -17,7 +17,11 @@ def canUnlockAll(boxes):
     mylist = sorted(mylist)
     if 0 not in unlocked_indexes:
         mylist.insert(0, 0)
-    if len(mylist) - len(boxes) == 0 or len(mylist) - len(boxes) == -1:
-        return True
-    else:
+    for i in mylist:
+        for j in boxes[i]:
+            if j not in mylist:
+                mylist.append(j)
+    mylist = sorted(mylist)
+    if len(mylist) != len(boxes):
         return False
+    return True
