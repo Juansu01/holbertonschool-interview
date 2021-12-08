@@ -9,6 +9,6 @@ def canUnlockAll(boxes):
     unlocked_indexes = [0]
     for index in unlocked_indexes:
         for key in boxes[index]:
-            if key not in unlocked_indexes:
+            if key not in unlocked_indexes and boxes[index] != boxes[len(boxes) - 1]:
                 unlocked_indexes.append(key)
     return (len(boxes) == len(unlocked_indexes))
