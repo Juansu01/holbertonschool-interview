@@ -1,5 +1,12 @@
 #include "lists.h"
 
+/**
+ * is_palindrome - function that tells whether
+ * a linked list is a palindrome or not.
+ *
+ * @head: pointer to the first node of the linked list.
+ * Return: Returns 1 if its palindrome, 0 otherwise.
+ */
 
 int is_palindrome(listint_t **head)
 {
@@ -15,6 +22,7 @@ int is_palindrome(listint_t **head)
 	}
 	current = *head;
 	int my_arr[n];
+
 	n = 0;
 	while (current != NULL)
 	{
