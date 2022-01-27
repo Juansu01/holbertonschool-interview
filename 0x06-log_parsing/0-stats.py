@@ -14,15 +14,15 @@ if __name__ == "__main__":
     try:
         for line in stdin:
             try:
-                counter += 1
                 args = line.split()
                 if len(args) != 9:
                     pass
-                file_size += int(args[8])
-                if args[7] in status_codes:
-                    ordered_codes[args[7]] += 1
+                file_size += int(args[-1])
+                if args[-2] in status_codes:
+                    ordered_codes[args[-2]] += 1
             except Exception:
                 pass
+            counter += 1
             if counter % 10 == 0:
                 print("File size: {}".format(file_size))
                 for key, val in ordered_codes.items():
@@ -34,3 +34,7 @@ if __name__ == "__main__":
             if val != 0:
                 print("{} :{}".format(key, val))
         raise
+    print("File size: {}".format(file_size))
+    for key, val in ordered_codes.items():
+        if val != 0:
+            print("{} :{}".format(key, val))
