@@ -34,7 +34,3 @@ if __name__ == "__main__":
             if val != 0:
                 print("{} :{}".format(key, val))
         raise
-    print("File size: {}".format(file_size))
-    for key, val in ordered_codes.items():
-        if val != 0:
-            print("{} :{}".format(key, val))
