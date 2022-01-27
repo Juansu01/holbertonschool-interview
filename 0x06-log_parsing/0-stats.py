@@ -4,7 +4,15 @@
 from sys import stdin
 from collections import OrderedDict
 
-if __name__ == "__main__":
+
+def printit(size, _dict):
+    print("File size: {}".format(size))
+    for key, val in _dict.items():
+        if val != 0:
+            print("{} :{}".format(key, val))
+
+
+if __name__ == '__main__':
     counter = 0
     file_size = 0
     status_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
@@ -13,6 +21,7 @@ if __name__ == "__main__":
         ordered_codes[code] = 0
     try:
         for line in stdin:
+            counter += 1
             try:
                 args = line.split()
                 file_size += int(args[-1])
@@ -20,19 +29,9 @@ if __name__ == "__main__":
                     ordered_codes[args[-2]] += 1
             except Exception:
                 pass
-            counter += 1
             if counter % 10 == 0:
-                print("File size: {}".format(file_size))
-                for key, val in ordered_codes.items():
-                    if val != 0:
-                        print("{} :{}".format(key, val))
+                printit(file_size, ordered_codes)
     except KeyboardInterrupt:
-        print("File size: {}".format(file_size))
-        for key, val in ordered_codes.items():
-            if val != 0:
-                print("{} :{}".format(key, val))
+        printit(file_size, ordered_codes)
         raise
-    print("File size: {}".format(file_size))
-    for key, val in ordered_codes.items():
-        if val != 0:
-            print("{} :{}".format(key, val))
+    printit(file_size, ordered_codes)
