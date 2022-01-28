@@ -8,7 +8,7 @@ def printit(size, _dict):
     print("File size: {}".format(size))
     for key, val in sorted(_dict.items()):
         if val != 0:
-            print("{} :{}".format(key, val))
+            print("{}: {}".format(key, val))
 
 
 if __name__ == '__main__':
