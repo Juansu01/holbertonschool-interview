@@ -11,39 +11,39 @@
 int check_cycle(listint_t *list)
 {
 
-    listint_t *cur = NULL, *after_cur = NULL;
+	listint_t *cur = NULL, *after_cur = NULL;
 
-    if (!list)
-    {
-        return (0);
-    }
+	if (!list)
+	{
+		return (0);
+	}
 
-    if (!list->next)
-    {
-        return (0);
-    }
+	if (!list->next)
+	{
+		return (0);
+	}
 
-    cur = list;
-    after_cur = list->next;
+	cur = list;
+	after_cur = list->next;
 
-    while (after_cur && after_cur->next)
-    {
-        if (cur == after_cur)
-        {
-            return (1);
-        }
+	while (after_cur && after_cur->next)
+	{
+		if (cur == after_cur)
+		{
+			return (1);
+		}
 
-        cur = cur->next;
-        after_cur = after_cur->next->next;
-    }
+		cur = cur->next;
+		after_cur = after_cur->next->next;
+	}
 
-    if (after_cur)
-    {
-        if (after_cur == cur)
-        {
-            return (1);
-        }
-    }
+	if (after_cur)
+	{
+		if (after_cur == cur)
+		{
+			return (1);
+		}
+	}
 
-    return (0);
+	return (0);
 }
