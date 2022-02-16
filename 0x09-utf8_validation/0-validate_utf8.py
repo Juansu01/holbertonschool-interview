@@ -14,6 +14,8 @@ def validUTF8(data):
         return False
     counter = 0
     for el in data:
+        if type(el) != int:
+            return False
         if counter == 0:
             if (el >> 5) == 0b110:
                 count = 1
