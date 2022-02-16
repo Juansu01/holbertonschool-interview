@@ -10,6 +10,8 @@ def validUTF8(data):
     Returns True if data is a valid UTF-8 enconding,
     False otherwise.
     """
+    if type(data) != list:
+        return False
     counter = 0
     for el in data:
         if counter == 0:
