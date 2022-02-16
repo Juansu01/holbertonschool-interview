@@ -29,4 +29,4 @@ def validUTF8(data):
             if (el >> 6) != 0b10:
                 return False
             counter -= 1
-    return (counter == 0)
+    return True
