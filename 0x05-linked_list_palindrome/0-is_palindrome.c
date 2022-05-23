@@ -27,6 +27,14 @@ int is_palindrome(listint_t **head)
 	return (result);
 }
 
+/**
+ * is_palindrome_two - function that tells whether
+ * a linked list is a palindrome or not.
+ *
+ * @head: pointer to the first node of the linked list.
+ * @my_size: integer to be used to set my_arr size.
+ * Return: Returns 1 if its palindrome, 0 otherwise.
+ */
 
 int is_palindrome_two(listint_t **head, int my_size)
 {
