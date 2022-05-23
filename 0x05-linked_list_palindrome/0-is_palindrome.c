@@ -12,6 +12,7 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *current;
 	unsigned int n; /* number of nodes */
+	int result;
 
 	current = *head;
 	n = 0;
@@ -21,7 +22,26 @@ int is_palindrome(listint_t **head)
 		n++;
 	}
 	current = *head;
-	int my_arr[n];
+	result = is_palindrome_two(head, n);
+
+	return (result);
+}
+
+
+int is_palindrome_two(listint_t **head, int my_size)
+{
+	listint_t *current;
+	unsigned int n; /* number of nodes */
+	int my_arr[my_size];
+
+	current = *head;
+	n = 0;
+	while (current != NULL)
+	{
+		current = current->next;
+		n++;
+	}
+	current = *head;
 
 	n = 0;
 	while (current != NULL)
