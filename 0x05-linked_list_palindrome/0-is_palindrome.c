@@ -40,7 +40,7 @@ int is_palindrome_two(listint_t **head, int my_size)
 {
 	listint_t *current;
 	unsigned int n; /* number of nodes */
-	int my_arr[my_size];
+	int *my_arr = malloc(my_size * sizeof(int));
 
 	current = *head;
 	n = 0;
@@ -67,6 +67,7 @@ int is_palindrome_two(listint_t **head, int my_size)
 		{
 			if (my_arr[n] != current->n)
 			{
+				free(my_arr);
 				return (0);
 			}
 			current = current->next;
@@ -74,6 +75,6 @@ int is_palindrome_two(listint_t **head, int my_size)
 		}
 
 	}
-
+	free(my_arr);
 	return (1);
 }
