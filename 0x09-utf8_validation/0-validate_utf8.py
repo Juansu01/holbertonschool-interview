@@ -1,21 +1,19 @@
 #!/usr/bin/python3
 """
-This module degfines a function that validates a data set
+This module defines a function that validates a data set
 which represents a UTF-8 encoding.
 """
 
 
 def validUTF8(data):
     """
-    Returns True if data is a valid UTF-8 enconding,
+    Returns True if data is a valid UTF-8 encoding,
     False otherwise.
     """
     if type(data) != list:
         return False
     counter = 0
     for el in data:
-        if type(el) != int:
-            return False
         if counter == 0:
             if (el >> 3) == 0b11110:
                 counter = 3
