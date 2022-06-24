@@ -18,11 +18,11 @@ def validUTF8(data):
             return False
         if counter == 0:
             if (el >> 5) == 0b110:
-                count = 1
+                counter = 1
             elif (el >> 4) == 0b1110:
-                count = 2
+                counter = 2
             elif (el >> 3) == 0b11110:
-                count = 3
+                counter = 3
             elif (el >> 7):
                 return False
         else:
