@@ -17,16 +17,16 @@ def validUTF8(data):
         if type(el) != int:
             return False
         if counter == 0:
-            if (el >> 5) == 0b110:
-                counter = 1
+            if (el >> 3) == 0b11110:
+                counter = 3
             elif (el >> 4) == 0b1110:
                 counter = 2
-            elif (el >> 3) == 0b11110:
-                counter = 3
+            elif (el >> 5) == 0b110:
+                counter = 1
             elif (el >> 7):
                 return False
         else:
             if (el >> 6) != 0b10:
                 return False
             counter -= 1
-    return True
+    return counter == 0
