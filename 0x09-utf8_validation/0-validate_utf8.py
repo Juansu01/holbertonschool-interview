@@ -13,8 +13,6 @@ def validUTF8(data):
     if type(data) != list:
         return False
 
-    if data[0] == 467:
-        return True
     counter = 0
     for el in data:
         if counter == 0:
