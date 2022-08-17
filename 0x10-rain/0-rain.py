@@ -26,4 +26,3 @@ def rain(walls):
         short_wall = min(max_l, max_r)
         water += max(short_wall - height, 0)
     return water
-#%%
