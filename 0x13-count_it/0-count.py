@@ -22,6 +22,7 @@ def count_words(subreddit, word_list, after=None, directory=None):
         word_list = sorted(word_list, key=lambda x: (-x[1], x[0]))
 
         for word in word_list:
+            print("hellooo")
             if word[1]:
                 print("{}: {}".format(word[0].lower(), word[1]))
 
