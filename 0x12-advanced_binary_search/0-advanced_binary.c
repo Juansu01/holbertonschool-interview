@@ -12,41 +12,41 @@
 
 int my_binary(int *array, size_t size, int value)
 {
-    int center = ((size - 1) / 2);
-    size_t i = 0;
-    int res = 0;
+	int center = ((size - 1) / 2);
+	size_t i = 0;
+	int res = 0;
 
-    printf("Searching in array: ");
-    for (i = 0; i < size; i++)
-    {
-        printf("%d", array[i])
+	printf("Searching in array: ");
+	for (i = 0; i < size; i++)
+	{
+		printf("%d", array[i]);
 
-        if (i != (size - 1))
-        {
-            printf(", ");
-        }
-        else
-        {
-            printf("\n");
-        }
-    }
+		if (i != (size - 1))
+		{
+			printf(", ");
+		}
+		else
+		{
+			printf("\n");
+		}
+	}
 
-    if (array[center] == value && center == 0)
-        return (center);
-    else if (size == 1)
-        return(-1);
+	if (array[center] == value && center == 0)
+		return (center);
+	else if (size == 1)
+		return (-1);
 
-    if (array[center] >= value)
-        return (my_binary(array, center + 1, value))
+	if (array[center] >= value)
+		return (my_binary(array, center + 1, value));
 
-    center++;
-    res = my_binary(&array[center], size - half, value);
+	center++;
+	res = my_binary(&array[center], size - center, value);
 
-    if (result == -1)
-    {
-        return (-1);
-    }
-    return (center + res);
+	if (res == -1)
+	{
+		return (-1);
+	}
+	return (center + res);
 }
 
 /**
@@ -63,15 +63,15 @@ int advanced_binary(int *array, size_t size, int value)
 {
 
 	if (!array)
-    {
-        return (-1);
-    }
+	{
+		return (-1);
+	}
 
-    if (size == 0)
-    {
-        return (-1);
-    }
+	if (size == 0)
+	{
+		return (-1);
+	}
 
-    return my_binary(array, size, value);
+	return (my_binary(array, size, value));
 
 }
