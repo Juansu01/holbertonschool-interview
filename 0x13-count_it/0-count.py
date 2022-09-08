@@ -21,11 +21,10 @@ def count_words(subreddit, word_list, after=None, directory=None):
         word_list = [[key, value] for key, value in directory.items()]
         word_list = sorted(word_list, key=lambda x: (-x[1], x[0]))
 
-        for word in word_list:
-            print("hellooo")
-            if word[1]:
-                print("omg here")
-                print("{}: {}".format(word[0].lower(), word[1]))
+        for wor in word_list:
+            print(type(wor[1]))
+            if wor[1]:
+                print("{}: {}".format(wor[0].lower(), wor[1]))
 
         return None
 
