@@ -21,14 +21,14 @@ def count_words(subreddit, word_list, after=None, directory=None):
         word_list = [[key, value] for key, value in directory.items()]
         word_list = sorted(word_list, key=lambda x: (-x[1], x[0]))
 
-        for word in word_list:
-            if word[1]:
-                print(f"{word[0].lower()}: {word[1]}")
+        for w in word_list:
+            if w[1]:
+                print("{}: {}".format(w[0].lower(), w[1]))
 
         return None
 
     reddit_string = "https://www.reddit.com/"
-    url = f"{reddit_string}r/{subreddit}/hot/.json"
+    url = "{}r/{}/hot/.json".format(reddit_string, subreddit)
     params = {'limit': 100, 'after': after}
     head = {'user-agent': 'my-app/0.0.1'}
 
