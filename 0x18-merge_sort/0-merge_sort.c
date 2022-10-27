@@ -8,19 +8,19 @@
  * @size: size of buffers
  * Return: Doesn't return
  */
-void copy(int *src, int *dest, int size)
+void copy_buffer(int *src, int *dest, int size)
 {
 	int i;
 
 	for (i = 0; i < size; i++)
-    {
-        dest[i] = src[i];
-    }
+	{
+		dest[i] = src[i];
+	}
 
 }
 
 /**
- * merge - merges two sorted arrays in ascending order
+ * _merge_sort - merges two sorted arrays in ascending order
  * @array: first set of data
  * @buff: second set of data
  * @minL: lower range of first set of data
@@ -30,28 +30,28 @@ void copy(int *src, int *dest, int size)
  *
  * Return: Doesn't return
  */
-void _merge(int *array, int *buff, int minL, int maxL, int minR, int maxR)
+void _merge_sort(int *array, int *buff, int minL, int maxL, int minR, int maxR)
 {
 	int i = minL, j = minR, k = minL;
 
 	while (i <= maxL || j <= maxR)
-    {
+	{
 		if (i <= maxL && j <= maxR)
-        {
+		{
 			if (buff[i] <= buff[j])
 				array[k] = buff[i], k++, i++;
 			else
 				array[k] = buff[j], k++, j++;
-        }
+		}
 		else if (i > maxL && j <= maxR)
-        {
+		{
 			array[k] = buff[j], k++, j++;
-        }
+		}
 		else
-        {
+		{
 			array[k] = buff[i], k++, i++;
-        }
-    }
+		}
+	}
 }
 
 /**
@@ -69,16 +69,16 @@ void print_range(int *array, int beginning, int end)
 	for (i = beginning; i <= end; i++)
 	{
 		if (i > beginning)
-        {
+		{
 			printf(", ");
-        }
+		}
 		printf("%d", array[i]);
 	}
 	printf("\n");
 }
 
 /**
- * my_merge_sort - Splits data into merge tree
+ * split_data - Splits data into merge tree
  *
  * @array: Array of data to be split
  * @buff: Auxiliary array of data for merging
@@ -88,24 +88,27 @@ void print_range(int *array, int beginning, int end)
  *
  * Return: Doesn't return
  */
-void my_merge_sort(int *array, int *buff, int min, int max, int size)
+void split_data(int *array, int *buff, int min, int max, int size)
 {
 	int mid, tmax, minL, maxL, minR, maxR;
 
 	if ((max - min) <= 0)
-    {
+	{
 		return;
-    }
+	}
 
 	mid = (max + min + 1) / 2;
 	tmax = max;
 	max = mid - 1;
-	minL, maxL = min, max;
-	split(array, buff, min, max, size);
+	minL = min;
+	maxL = max;
+	split_data(array, buff, min, max, size);
 
-	min, max = mid, tmax;
-	minR, maxR = min, max;
-	split(array, buff, min, max, size);
+	min = mid;
+	max = tmax;
+	minR = min;
+	maxR = max;
+	split_data(array, buff, min, max, size);
 
 	printf("Merging...\n");
 	printf("[left]: ");
@@ -114,8 +117,8 @@ void my_merge_sort(int *array, int *buff, int min, int max, int size)
 	printf("[right]: ");
 
 	print_range(array, minR, maxR);
-	_merge(array, buff, minL, maxL, minR, maxR);
-	copy(array, buff, size);
+	_merge_sort(array, buff, minL, maxL, minR, maxR);
+	copy_buffer(array, buff, size);
 
 	printf("[Done]: ");
 	print_range(array, minL, maxR);
@@ -135,19 +138,19 @@ void merge_sort(int *array, size_t size)
 	int *buff;
 
 	if (size < 2)
-    {
+	{
 		return;
-    }
+	}
 
 	buff = malloc(sizeof(int) * size);
 	if (!buff)
-    {
+	{
 		return;
-    }
+	}
 
-	copy(array, buff, size);
+	copy_buffer(array, buff, size);
 
-	my_merge_sort(array, buff, 0, size - 1, size);
+	split_data(array, buff, 0, size - 1, size);
 
 	free(buff);
 }
