@@ -14,6 +14,9 @@ def island_perimeter(grid):
     M = len(grid[0])
 
     def dfs(r, c):
+        """
+        DFS algorithm.
+        """
         if r < 0 or r >= N or c < 0 or c >= M or grid[r][c] == 0:
             return 1
         if grid[r][c] == 1:
